@@ -9,6 +9,11 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         models.author.hasMany(models.post);
       }
+    },
+    instanceMethods: {
+      getFullName: function() {
+        return this.firstName + ' ' + this.lastName;
+      }
     }
   });
   return author;
