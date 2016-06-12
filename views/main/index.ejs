@@ -8,6 +8,9 @@
           <a href="/posts/<%= post.id %>"><%= post.title %></a>
           <small>by <%= post.author.getFullName() %></small>
         </h2>
+        <p>
+          <strong><%= moment(post.createdAt).calendar() %></strong>
+        </p>
       </div>
     <% }); %>
 
