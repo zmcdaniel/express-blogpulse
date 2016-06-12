@@ -106,3 +106,9 @@ When finished with the above, style the application appropriately with CSS. Use 
 * Add the ability to create rich text posts and comments using Markdown.
   * Front-end Bootstrap Markdown editor: http://www.codingdrama.com/bootstrap-markdown/
   * A markdown parser for your EJS templates: https://www.npmjs.com/package/marked#usage
+
+## Deliverables
+
+Here's an example screenshot of the post page, complete with comments. Your finished deliverable will differ and include the desired functionality.
+
+![Example Comments](./example-comments.jpg)
