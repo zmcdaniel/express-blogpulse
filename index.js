@@ -11,11 +11,15 @@ app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/public/'));
+/* middleware that allows us to access the 'moment' library
+ * in every single EJS view, without having to define it
+ */
 app.use(function(req, res, next) {
   res.locals.moment = moment;
   next();
 });
 
+// GET / - display all posts and their authors
 app.get('/', function(req, res) {
   db.post.findAll({
     include: [db.author]
@@ -28,9 +32,13 @@ app.get('/', function(req, res) {
   });
 });
 
+// bring in authors and posts controllers
 app.use('/authors', require('./controllers/authors'));
 app.use('/posts', require('./controllers/posts'));
 
+/* middleware for displaying a 500 server error. You may want to
+ * comment this out during development in order to view error messages
+ */
 app.use(function(err, req, res, next) {
   res.status(500).render('main/500');
 });

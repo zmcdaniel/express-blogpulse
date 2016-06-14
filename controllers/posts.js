@@ -2,6 +2,7 @@ var express = require('express');
 var db = require('../models');
 var router = express.Router();
 
+// POST /posts - create a new post
 router.post('/', function(req, res) {
   db.post.create({
     title: req.body.title,
@@ -16,6 +17,7 @@ router.post('/', function(req, res) {
   });
 });
 
+// GET /posts/new - display form for creating new posts
 router.get('/new', function(req, res) {
   db.author.findAll()
   .then(function(authors) {
@@ -26,6 +28,7 @@ router.get('/new', function(req, res) {
   });
 });
 
+// GET /posts/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },

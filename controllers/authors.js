@@ -2,6 +2,7 @@ var express = require('express');
 var db = require('../models');
 var router = express.Router();
 
+// GET /authors - display all authors
 router.get('/', function(req, res) {
   db.author.findAll()
   .then(function(authors) {
@@ -12,6 +13,7 @@ router.get('/', function(req, res) {
   });
 });
 
+// POST /authors - create a new author
 router.post('/', function(req, res) {
   db.author.create({
     firstName: req.body.firstName,
@@ -26,10 +28,12 @@ router.post('/', function(req, res) {
   });
 });
 
+// GET /authors/new - display form for creating a new author
 router.get('/new', function(req, res) {
   res.render('authors/new');
 });
 
+// GET /authors/:id - display a specific author and their posts
 router.get('/:id', function(req, res) {
   db.author.find({
     where: { id: req.params.id },
