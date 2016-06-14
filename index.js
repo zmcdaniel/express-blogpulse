@@ -36,13 +36,6 @@ app.get('/', function(req, res) {
 app.use('/authors', require('./controllers/authors'));
 app.use('/posts', require('./controllers/posts'));
 
-/* middleware for displaying a 500 server error. You may want to
- * comment this out during development in order to view error messages
- */
-app.use(function(err, req, res, next) {
-  res.status(500).render('main/500');
-});
-
 var server = app.listen(process.env.PORT || 3000);
 
 module.exports = server;
