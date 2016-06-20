@@ -44,7 +44,7 @@ After setup, **STOP**. You're using an existing application, so make sure to rea
 ## User Stories
 
 * As a user, I want to comment on a post in order to express my opinions.
-* As a user, I want to views comments on a post in order to see my community's opinions about a post.
+* As a user, I want to view comments on a post in order to see my community's opinions about a post.
 
 ## Requirements
 
@@ -88,7 +88,7 @@ Now that the model has been created, you'll want to add the ability to create an
 
 * Add the ability to view comments on `GET /posts/:id`.
   * See the example above on how to include the comments, then use EJS to render each comment's information on the page. Make sure you have a comment in the database you can use to verify this functionality.
-* On the same page (`GET /posts/:id`), create a form to submit a new comment. Nnote that we don't *necessarily* need to render a form on a separate page.
+* On the same page (`GET /posts/:id`), create a form to submit a new comment. Note that we don't *necessarily* need to render a form on a separate page.
   * Include the necessary attributes, `name` and `content`. Feel free to look at the forms for authors and posts as examples.
   * Create a new route to receive this form data. This will be the action for your form. A good route to define could be `POST /posts/:id/comments`. Note how we're passing the post id.
     * Test the route by sending the form body
