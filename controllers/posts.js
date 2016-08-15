@@ -28,8 +28,9 @@ router.get('/new', function(req, res) {
   });
 });
 
-// GET /posts/:id - display a specific post and its author
+// GET /posts/:id - display a specific post and its author, plus comments
 router.get('/:id', function(req, res) {
+
   db.post.find({
     where: { id: req.params.id },
     include: [db.author]
@@ -40,6 +41,14 @@ router.get('/:id', function(req, res) {
   })
   .catch(function(error) {
     res.status(400).render('main/404');
+  });
+
+  db.post.find({
+    where: { id: req.params.id },
+    include: [db.comment]
+  }).then(function(post) {
+    // by using eager loading, the post model should have a comments key
+    res.render('posts/show', {comment: comment});
   });
 });
 

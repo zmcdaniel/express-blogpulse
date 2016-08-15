@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        models.post.hasMany(models.comment);
         models.post.belongsTo(models.author);
       }
     }
